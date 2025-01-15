@@ -70,3 +70,7 @@ ORDER BY s.student_id;
 SELECT c.course_id, c.course_name, c.department, s.student_id, s.name AS student_name, e.enrollment_date
 FROM Students s RIGHT JOIN  Enrollments e ON s.student_id = e.student_id RIGHT JOIN  Courses c ON e.course_id = c.course_id
 ORDER BY c.course_id;
+
+SELECT Students.name , Students.year_of_study
+FROM Students
+ORDER BY year_of_study ASC
