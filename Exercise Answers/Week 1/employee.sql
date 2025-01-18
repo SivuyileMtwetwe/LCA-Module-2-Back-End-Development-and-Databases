@@ -142,8 +142,74 @@ ORDER BY first_name;
 SELECT employee.first_name AS "First Name", employee.last_name AS "Last Name", salary.amount AS "Salary"
 FROM employee INNER JOIN salary
 ON employee.emp_no = salary.emp_no
-
+ORDER BY first_name;
 
 -- Q4
-SELECT employee.emp_no AS "Employee Number" , CONCAT(employee.first_name," ", employee.last_name) AS "Employees Name", title.title AS "Position", salary.amount AS "Salary", (salary.amount+ salary.amount*0.005) AS "Increased Salary"
-fro
+SELECT employee.emp_no AS "Employee Number" , CONCAT(employee.first_name," ", employee.last_name) AS "Employees Name", title.title AS "Position", salary.amount AS "Salary", (salary.amount+ salary.amount*0.05) AS "Increased Salary"
+FROM employee INNER JOIN title
+ON employee.emp_no = title.emp_no
+INNER JOIN salary
+ON title.emp_no = salary.emp_no
+WHERE title.title = "Assistant Engineer";
+
+-- Q5
+-- CHECKING IF THE EMPLOYYE EXISTS
+SELECT employee.emp_no AS "Employee Number" , CONCAT(employee.first_name," ", employee.last_name) AS "Employees Name", employee.gender AS "Gender", employee.hire_date AS "Date of Hire"
+FROM employee
+WHERE first_name LIKE "Yishay" AND employee.last_name LIKE "Tzvieli"
+ORDER BY first_name;
+
+-- DELETING
+
+-- DELETE employee 
+-- FROM employee INNER JOIN dept_manager 
+-- ON employee.emp_no = dept_manager.emp_no
+-- INNER JOIN dept_emp
+-- ON dept_manager.emp_no = dept_emp.emp_no
+-- INNER JOIN title
+-- ON dept_emp.emp_no = title.emp_no
+-- INNER JOIN salary
+-- ON title.emp_no = salary.emp_no
+-- WHERE emp_no LIKE 10043 OR (first_name LIKE "Yishay" AND employee.last_name LIKE "Tzvieli")
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE 
+FROM employee 
+WHERE first_name LIKE "Yishay" AND employee.last_name LIKE "Tzvieli";
+
+-- CORNFIMING DELETIOM
+SELECT employee.emp_no AS "Employee Number" , CONCAT(employee.first_name," ", employee.last_name) AS "Employees Name", employee.gender AS "Gender", employee.hire_date AS "Date of Hire"
+FROM employee
+WHERE first_name LIKE "Yishay" AND employee.last_name LIKE "Tzvieli"
+ORDER BY first_name;
+
+-- Q6
+
+INSERT INTO department (dept_no, dept_name)
+VALUES ("d010", "Cybersecurity");
+
+
+-- Q7 
+
+-- SELECT CURRENT_DATE()
+
+INSERT INTO employee 
+VALUES (11001, "1982-05-25", "John", "Doe", "M", CURRENT_DATE());
+
+SELECT employee.emp_no AS "Employee Number" , CONCAT(employee.first_name," ", employee.last_name) AS "Employees Name", employee.gender AS "Gender", employee.hire_date AS "Date of Hire"
+FROM employee
+WHERE emp_no LIKE 11001;
+
+
+-- Q8 
+INSERT INTO title
+VALUES (11001, "Head of Cybersecurity", "2025-01-18", CURRENT_DATE());
+
+-- Q9
+INSERT INTO dept_manager
+VALUES (11001, "d010", "2025-01-18", CURRENT_DATE());
+
+-- Q10 
+INSERT INTO salary
+VALUES (11001, 85000 , "2025-01-18", CURRENT_DATE());
