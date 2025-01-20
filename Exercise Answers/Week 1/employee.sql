@@ -213,3 +213,17 @@ VALUES (11001, "d010", "2025-01-18", CURRENT_DATE());
 -- Q10 
 INSERT INTO salary
 VALUES (11001, 85000 , "2025-01-18", CURRENT_DATE());
+
+-- Q11
+UPDATE title
+SET title = "Cybersecurity Analyst"
+WHERE emp_no = 10784;
+
+-- Q12
+INSERT INTO salary
+VALUES (10784, 72000 , "2025-01-18", CURRENT_DATE());
+
+-- Q13
+
+INSERT INTO dept_emp
+VALUES (10784,  "d010" , "2025-01-18", CURRENT_DATE());
